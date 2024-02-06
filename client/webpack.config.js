@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode :  "development",
+    mode :  "production",
    entry: './src/index.js',
    output: {
     filename: 'bundle.js',
@@ -21,6 +21,9 @@ module.exports = {
     hot :  true,
     compress : true,
     historyApiFallback : true,
+    proxy: {
+      "/api" : "http://localhost:8000"
+    },
 
   },
 
@@ -45,7 +48,7 @@ module.exports = {
   },
   plugins : [
     new HtmlWebpackPlugin({
-      title : "webpack App",
+      title : "gymIdea App",
       filename : "index.html",
       template : "./src/index.html"
     }),
